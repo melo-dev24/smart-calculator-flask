@@ -22,17 +22,17 @@ The project demonstrates backend logic using Python, frontend design using HTML/
 
 
 ## Project Structure
-project-folder/
-│── app.py # Main Flask application
-│── calculator.py # Core calculation logic (OOP)
-│
-├── templates/
-│ └── index.html # Frontend UI
-│
-├── static/
-│ ├── style.css # Styling
-│ ├── script.js # Frontend logic
-│ └── fonts/
+project-folder/ <br>
+│── app.py # Main Flask application <br>
+│── calculator.py # Core calculation logic (OOP) <br>
+│ <br>
+├── templates/ <br>
+│ └── index.html # Frontend UI <br>
+│ <br>
+├── static/ <br>
+│ ├── style.css # Styling <br>
+│ ├── script.js # Frontend logic <br>
+│ └── fonts/ <br>
 │ └── Digital-7.ttf # Custom calculator font
 
 ## Installation & Setup
