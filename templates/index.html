@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Calculator</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="calculator-container">
+        <h1>CALCULATOR</h1>
+
+        <form method="POST" id="calc-form">
+            <input type="text" name="expression" id="display" readonly />
+            <input type="hidden" name="original_expression" id="original_expression" />
+
+            <div class="button-grid">
+
+                <!-- Row 1 -->
+                <button type="button" id="clear-btn" onclick="clearOrAllClear(event)" class="btn clear">AC</button>
+                <button type="button" onclick="backspace()" class="btn operator">⌫</button>
+                <button type="button" onclick="append('%')" class="btn operator">%</button>
+                <button type="button" onclick="append('÷')" class="btn operator">÷</button>
+
+                <!-- Row 2 -->
+                <button type="button" onclick="append('7')" class="btn">7</button>
+                <button type="button" onclick="append('8')" class="btn">8</button>
+                <button type="button" onclick="append('9')" class="btn">9</button>
+                <button type="button" onclick="append('×')" class="btn operator">×</button>
+
+                <!-- Row 3 -->
+                <button type="button" onclick="append('4')" class="btn">4</button>
+                <button type="button" onclick="append('5')" class="btn">5</button>
+                <button type="button" onclick="append('6')" class="btn">6</button>
+                <button type="button" onclick="append('−')" class="btn operator">−</button>
+
+                <!-- Row 4 -->
+                <button type="button" onclick="append('1')" class="btn">1</button>
+                <button type="button" onclick="append('2')" class="btn">2</button>
+                <button type="button" onclick="append('3')" class="btn">3</button>
+                <button type="button" onclick="append('+')" class="btn operator">+</button>
+
+                <!-- Row 5 -->
+                <button type="button" onclick="append('0')" class="btn zero">0</button>
+                <button type="button" onclick="append('.')" class="btn">.</button>
+                <button type="submit" class="btn equal">=</button>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="history-grid">
+        {% if result is not none %}
+        <div class="result-display">
+            <h2>Result:</h2>
+            <p class="result-value">{{ result }}</p>
+        </div>
+        {% endif %}
+
+        <div class="history-display">
+            <h2>History</h2>
+            {% if history %}
+            <ul>
+                {% for item in history %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p style="color: #999; text-align: center;">No history yet</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <form id="clear-history-form" method="POST" action="/clear-history" style="display: none;"></form>
+
+    <!-- Link to external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
