@@ -17,8 +17,12 @@ class Calculator:
             expression = expression.replace('−', '-')  # Minus
             expression = expression.replace('%', '/100')  # Percentage
 
-            result = eval(expression)
-            result = round(result, 10)
+            allowed_chars = "0123456789+-*/()."
+            if all(char in allowed_chars for char in expression):
+                result = eval(expression)
+                result = round(result, 10)
+            else:
+                result = "Invalid input"
 
             self.history.append(f"{display_expression} = {result}")
             return result
